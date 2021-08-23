@@ -34,16 +34,14 @@ methods: {
       let found = false;
 
       // Add the item or increase qty
-			let itemInCart = this.cart.filter(product => product.id===itemToAdd.id);
-			let isItemInCart = itemInCart.length > 0;
+			let itemInCart = this.cart.find(product => product.id===itemToAdd.id);
 
-      if (isItemInCart === false) {
+      if (!itemInCart) {
         this.cart.push(itemToAdd);
       } else {
-				itemInCart[0].quantity += itemToAdd.quantity;
+				itemInCart.quantity += itemToAdd.quantity;
 			}
 			
-			itemToAdd.quantity = 1;
     },
 
   removeItemFromCart(product){
